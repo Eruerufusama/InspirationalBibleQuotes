@@ -4,6 +4,10 @@ import urllib
 from PIL import Image, ImageFont, ImageDraw
 import bot
 
+def select_header():
+    with open('tweet_headers.txt') as header:
+        headers = header.read().split("\n")
+        return random.choice(headers)
 
 def select_quote():
     with open('bible_verses.txt') as bible:
@@ -43,8 +47,9 @@ def main():
     verse = select_quote()
     get_img()  # Download img
     put_quote_on_wallpaper('./photo_of_the_day.png', verse)
+    tweet = select_quote()
     # ---- Upload img to twitter ---- #
-    bot.main()
+    bot.main(tweet)
 
 
 if __name__ == '__main__':
