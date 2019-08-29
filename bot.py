@@ -11,9 +11,4 @@ auth = tweepy.OAuthHandler(api_key, api_secret)
 auth.set_access_token(token_key, token_secret)
 api = tweepy.API(auth)
 
-mentions = api.mentions_timeline()
-
-# Dette greiene var bare noe testgreier. Ignorer.
-for mention in mentions:
-    
-    api.update_status("@" + mention.user.screen_name + " Sup dude.", mention.id)
+api.update_status("Tweet")
