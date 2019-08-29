@@ -1,14 +1,21 @@
 # @Inspira39021145 <---- Twitter handle
-import tweepy # Twitter module
+import tweepy  # Twitter module
 
-# Sånne greier vi trenger for autentikasjon
-api_key, api_secret = "WO1t9lUsG8OjAoEnJrU37Ohzd", "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2"
-token_key, token_secret = "1166347129025155072-EaGxHUB9bUf5ImDmdyXOXPq4U5cZSZ", "bbJtob2GjLx4of2NwTYjMkw7OdBhhFzimufoFzySPFzKd"
 
-# Konstruksjon av et objekt vi kan bruke. bla bla bla--
-auth = tweepy.OAuthHandler(api_key, api_secret)
-auth.set_access_token(token_key, token_secret)
-api = tweepy.API(auth)
+def main():
+    # Sånne greier vi trenger for autentikasjon
+    api_key, api_secret = "WO1t9lUsG8OjAoEnJrU37Ohzd", "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2"
+    token_key, token_secret = "1166347129025155072-EaGxHUB9bUf5ImDmdyXOXPq4U5cZSZ", "bbJtob2GjLx4of2NwTYjMkw7OdBhhFzimufoFzySPFzKd"
 
-# FAKTISK BRUK AV API
-api.update_status("Tweet") # Dette er legit ossn man tweeter.
+    # Konstruksjon av et objekt vi kan bruke. bla bla bla--
+    auth = tweepy.OAuthHandler(api_key, api_secret)
+    auth.set_access_token(token_key, token_secret)
+    api = tweepy.API(auth)
+
+    # FAKTISK BRUK AV API
+    # api.update_status("Tweet") # Dette er legit ossn man tweeter.
+    api.update_with_media('photo_of_the_day.png')
+
+
+if __name__ == '__main__':
+    main()
