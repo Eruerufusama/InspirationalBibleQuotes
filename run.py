@@ -1,7 +1,7 @@
 import random
 import requests
 import urllib
-from PIL import Image, ImageFont, ImageDraw
+from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from textwrap import wrap
 import bot
 
@@ -29,32 +29,46 @@ def select_quote():
 
 def get_img():
     pic_num = random.randint(2, 1084)
-    url = 'https://picsum.photos/1440/2560'
+    url = 'https://picsum.photos/1080/1920'
     urllib.request.urlretrieve(url, './photo_of_the_day.png')
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
-    lines = wrap(biblequote, 30)
-    image = Image.open(wallpaper)
-    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 88)
+    lines = wrap(biblequote, 40)                                # Split verse into multiple lines if needed
+    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 48)   # Define font-parameters
 
-# ----- Draw text onto wallpaper ----- #
-    draw = ImageDraw.Draw(image)
-    x_text = 100
-    y_text = 100
+
+
+# Open layers
+    image = Image.open(wallpaper)                               # Background
+    text_layer = Image.new('RGBA', (1080, 1920), None)          # Text-layer
+
+# Create draw-object
+    draw = ImageDraw.Draw(text_layer)
+
+# Draw text onto text-layer
+    x = 100
+    y = 100
+    offset = 3
+
+    # Draws shadow
     for line in lines:
         width, height = font.getsize(line)
+        draw.text((x + offset, y + offset), line, "black", font)
+        y += height
+    y = 100
 
-        draw.text((x_text - 1, y_text), line, font=font, fill='black')
-        draw.text((x_text + 1, y_text), line, font=font, fill='black')
-        draw.text((x_text, y_text - 1), line, font=font, fill='black')
-        draw.text((x_text, y_text + 1), line, font=font, fill='black')
+    # Draws overlaid text
+    for line in lines:
+        width, height = font.getsize(line)
+        draw.text((x, y), line, "white", font)
 
-        draw.text((x_text, y_text), line, "white", font)
+        y += height
+    
+# Merges layers
+    image.paste(text_layer, (0, 0), text_layer)
 
-        y_text += height
-
-    image.show()
+    image.show()                                                # Debug
     image.save('./photo_of_the_day.png')
 
 
@@ -64,9 +78,9 @@ def main():
     get_img()
     put_quote_on_wallpaper('./photo_of_the_day.png', verse)
 
-    tweet = select_quote()
+    tweet = select_header()
     # ----- Upload img to twitter ----- #
-    # bot.main(tweet)
+    bot.main(tweet)
 
 
 if __name__ == '__main__':
