@@ -90,7 +90,10 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
 # Merges layers
     image.paste(text_layer, (0, 0), text_layer)
 
-    image.show() # Debug
+# Debug    
+    #image.show()
+
+    
     image.save('./photo_of_the_day.png')
 
 
