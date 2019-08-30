@@ -59,7 +59,7 @@ def get_img():
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
     lines = wrap(biblequote, 40) # Split verse into multiple lines if needed
-    font = ImageFont.truetype("/Library/Fonts/Roboto.ttf", 48) # Define font-parameters
+    font = ImageFont.truetype("/usr/share/fonts/truetype/roboto/hinted/Roboto-Medium.ttf", 48) # Define font-parameters
 
 # Open layers
     image = Image.open(wallpaper) # Background
