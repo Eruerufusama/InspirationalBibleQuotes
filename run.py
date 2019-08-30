@@ -4,11 +4,14 @@ import urllib
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from textwrap import wrap
 import bot
+from time import sleep
+
 
 def select_header():
     with open('tweet_headers.txt') as header:
         headers = header.read().split("\n")
         return random.choice(headers)
+
 
 def fill_header_with_emojis(header):
     returnstring = ""
@@ -20,15 +23,18 @@ def fill_header_with_emojis(header):
         for i in range(memeload):
             returnstring += random.choice(emojis)
         splitted_header = header.split()
+
         for word in splitted_header:
             returnstring += word
             for i in range(memeload):
                 returnstring += random.choice(emojis)
     return returnstring
 
+
 def create_header():
     header = select_header()
     return fill_header_with_emojis(header)
+
 
 def select_quote():
     with open('bible_verses.txt') as bible:
@@ -44,10 +50,12 @@ def select_quote():
         verse = verse[verse.find(' ') + 1:].rstrip()
         return verse
 
+
 def get_img():
     pic_num = random.randint(2, 1084)
     url = 'https://picsum.photos/1080/1920'
     urllib.request.urlretrieve(url, './photo_of_the_day.png')
+
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
     lines = wrap(biblequote, 40) # Split verse into multiple lines if needed
@@ -87,14 +95,16 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
 
 
 def main():
-    verse = select_quote()
-    # ----- Download imgage ----- #
-    get_img()
-    put_quote_on_wallpaper('./photo_of_the_day.png', verse)
+    while True:
+        verse = select_quote()
+        # ----- Download imgage ----- #
+        get_img()
+        put_quote_on_wallpaper('./photo_of_the_day.png', verse)
 
-    tweet = create_header()
-    # ----- Upload img to twitter ----- #
-    bot.main(tweet)
+        tweet = create_header()
+        # ----- Upload img to twitter ----- #
+        bot.main(tweet)
+        sleep(60)
 
 
 if __name__ == '__main__':
