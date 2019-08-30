@@ -93,8 +93,8 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
 # Debug    
     #image.show()
 
-    
-    image.save('./photo_of_the_day.png')
+
+    image.save('./photo_of_the_day.jpg')
 
 
 def main():
@@ -102,7 +102,7 @@ def main():
         verse = select_quote()
         # ----- Download imgage ----- #
         get_img()
-        put_quote_on_wallpaper('./photo_of_the_day.png', verse)
+        put_quote_on_wallpaper('./photo_of_the_day.jpg', verse)
 
         tweet = create_header()
         # ----- Upload img to twitter ----- #
