@@ -30,7 +30,7 @@ def select_quote():
 def get_img():
     pic_num = random.randint(2, 1084)
     url = 'https://picsum.photos/1440/2560'
-    urllib.request.urlretrieve(url, './photo_of_the_day.png')
+    urllib.request.urlretrieve(url, './photo_of_the_day.jpg')
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
@@ -44,29 +44,26 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
     y_text = 100
     for line in lines:
         width, height = font.getsize(line)
-
+        # ----- Outline text on image ----- #
         draw.text((x_text - 1, y_text), line, font=font, fill='black')
         draw.text((x_text + 1, y_text), line, font=font, fill='black')
         draw.text((x_text, y_text - 1), line, font=font, fill='black')
         draw.text((x_text, y_text + 1), line, font=font, fill='black')
-
+        # ----- Main part of text ----- #
         draw.text((x_text, y_text), line, "white", font)
-
         y_text += height
 
-    image.show()
-    image.save('./photo_of_the_day.png')
+    image.save('./photo_of_the_day.jpg')
 
 
 def main():
     verse = select_quote()
     # ----- Download imgage ----- #
     get_img()
-    put_quote_on_wallpaper('./photo_of_the_day.png', verse)
-
+    put_quote_on_wallpaper('./photo_of_the_day.jpg', verse)
     tweet = select_quote()
     # ----- Upload img to twitter ----- #
-    # bot.main(tweet)
+    bot.main(tweet)
 
 
 if __name__ == '__main__':
