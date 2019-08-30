@@ -34,14 +34,14 @@ def get_img():
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
-    lines = wrap(biblequote, 40)                                # Split verse into multiple lines if needed
-    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 48)   # Define font-parameters
+    lines = wrap(biblequote, 40) # Split verse into multiple lines if needed
+    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 48) # Define font-parameters
 
 
 
 # Open layers
-    image = Image.open(wallpaper)                               # Background
-    text_layer = Image.new('RGBA', (1080, 1920), None)          # Text-layer
+    image = Image.open(wallpaper) # Background
+    text_layer = Image.new('RGBA', (image.size[0], image.size[1]), None) # Text-layer
 
 # Create draw-object
     draw = ImageDraw.Draw(text_layer)
@@ -49,7 +49,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
 # Draw text onto text-layer
     x = 100
     y = 100
-    offset = 3
+    offset = 2
 
     # Draws shadow
     for line in lines:
@@ -68,7 +68,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
 # Merges layers
     image.paste(text_layer, (0, 0), text_layer)
 
-    image.show()                                                # Debug
+    image.show() # Debug
     image.save('./photo_of_the_day.png')
 
 
