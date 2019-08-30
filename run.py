@@ -2,6 +2,7 @@ import random
 import requests
 import urllib
 from PIL import Image, ImageFont, ImageDraw
+from textwrap import wrap
 import bot
 
 
@@ -21,25 +22,39 @@ def select_quote():
                 verse = random.choice(bible_list)
             else:
                 break
-        # ----- remove verse number ----- #
+        # ----- Remove verse number from line ----- #
         verse = verse[verse.find(' ') + 1:].rstrip()
         return verse
 
 
 def get_img():
     pic_num = random.randint(2, 1084)
-    url = 'https://picsum.photos/800/1200'
+    url = 'https://picsum.photos/1440/2560'
     urllib.request.urlretrieve(url, './photo_of_the_day.png')
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
-    # ----- Open image -----#
+    lines = wrap(biblequote, 30)
     image = Image.open(wallpaper)
-    # ----- Select Font-type, Font-size ----- #
-    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 24)
-    # ----- Draw text onto wallpaper ----- #
+    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 88)
+
+# ----- Draw text onto wallpaper ----- #
     draw = ImageDraw.Draw(image)
-    draw.text((100, 100), biblequote, "black", font)
+    x_text = 100
+    y_text = 100
+    for line in lines:
+        width, height = font.getsize(line)
+
+        draw.text((x_text - 1, y_text), line, font=font, fill='black')
+        draw.text((x_text + 1, y_text), line, font=font, fill='black')
+        draw.text((x_text, y_text - 1), line, font=font, fill='black')
+        draw.text((x_text, y_text + 1), line, font=font, fill='black')
+
+        draw.text((x_text, y_text), line, "white", font)
+
+        y_text += height
+
+    image.show()
     image.save('./photo_of_the_day.png')
 
 
@@ -48,9 +63,10 @@ def main():
     # ----- Download imgage ----- #
     get_img()
     put_quote_on_wallpaper('./photo_of_the_day.png', verse)
+
     tweet = select_quote()
     # ----- Upload img to twitter ----- #
-    bot.main(tweet)
+    # bot.main(tweet)
 
 
 if __name__ == '__main__':
