@@ -2,6 +2,7 @@ import random
 import requests
 import urllib
 from PIL import Image, ImageFont, ImageDraw
+from textwrap import wrap
 import bot
 
 def select_header():
@@ -26,19 +27,22 @@ def select_quote():
 def get_img():
     pic_num = random.randint(2, 1084)
     url = 'https://picsum.photos/800/1200'
-    #r = requests.get(url)
-    # print(r.text)
     urllib.request.urlretrieve(url, './photo_of_the_day.png')
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
-    # ----- Open image -----#
+    lines = wrap(biblequote, 30)
+
     image = Image.open(wallpaper)
-# ----- Select Font-type, Font-size ----- #
-    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 24)
+    font = ImageFont.truetype("/Library/Fonts/arial.ttf", 48)
+
 # ----- Draw text onto wallpaper ----- #
     draw = ImageDraw.Draw(image)
-    draw.text((100, 100), biblequote, "black", font)
+    y_text = 100
+    for line in lines:
+        width, height = font.getsize(line)
+        draw.text((100, y_text), line, "white", font)
+        y_text += height
     print(123)
     image.save('./photo_of_the_day.png')
 
@@ -47,7 +51,7 @@ def main():
     verse = select_quote()
     get_img()  # Download img
     put_quote_on_wallpaper('./photo_of_the_day.png', verse)
-    tweet = select_quote()
+    tweet = select_header()
     # ---- Upload img to twitter ---- #
     bot.main(tweet)
 
