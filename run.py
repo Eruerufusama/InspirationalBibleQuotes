@@ -55,7 +55,15 @@ def select_quote():
 def get_img():
     pic_num = random.randint(2, 1084)
     url = 'https://picsum.photos/1080/1920'
-    urllib.request.urlretrieve(url, './photo_of_the_day.jpg')
+
+# TEMPORALY FIX ( High Priority )
+    while True:
+        try:
+            urllib.request.urlretrieve(url, './photo_of_the_day.jpg')
+            break
+        except:
+            print("An error occured while attempting to load image")
+            sleep(1)
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
@@ -66,12 +74,16 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
         font = ImageFont.truetype("fonts/truetype/arial.ttf", 48)
 
 # Open layers
+
+# TEMPORALY FIX ( High Priority )
     while True:
         try:
             image = Image.open(wallpaper)  # Background
             break
         except OSError:
             print("An error occured when attempting to open image")
+            sleep(1)
+
     text_layer = Image.new('RGBA', (image.size[0], image.size[1]), None)  # Text-layer
 
 # Create draw-object
