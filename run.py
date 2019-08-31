@@ -54,6 +54,7 @@ def select_quote():
 
 def get_img():
     pic_num = random.randint(2, 1084)
+    print(pic_num)
     url = 'https://picsum.photos/1080/1920'
     urllib.request.urlretrieve(url, './photo_of_the_day.jpg')
 
