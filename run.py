@@ -105,7 +105,7 @@ def main():
         verse = select_quote()
         # ----- Download imgage ----- #
         get_img()
-        put_quote_on_wallpaper('./photo_of_the_day.jpg', verse)
+        put_quote_on_wallpaper('photo_of_the_day.jpg', verse)
 
         tweet = create_header()
         # ----- Upload img to twitter ----- #
