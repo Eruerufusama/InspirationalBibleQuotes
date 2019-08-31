@@ -1,6 +1,4 @@
-# @InspiredByBible <---- Twitter handle
 import tweepy  # Twitter module
-
 
 def main(header):
     # Sånne greier vi trenger for autentikasjon
@@ -12,6 +10,6 @@ def main(header):
     auth.set_access_token(token_key, token_secret)
     api = tweepy.API(auth)
 
-    # FAKTISK BRUK AV API
-    # api.update_status("Tweet") # Dette er legit ossn man tweeter.
+    # Tweet
+    print("Posting image.")
     api.update_with_media('photo_of_the_day.jpg', header)

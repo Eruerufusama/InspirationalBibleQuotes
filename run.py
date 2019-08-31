@@ -66,7 +66,12 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
         font = ImageFont.truetype("fonts/truetype/arial.ttf", 48)
 
 # Open layers
-    image = Image.open(wallpaper)  # Background
+    while True:
+        try:
+            image = Image.open(wallpaper)  # Background
+            break
+        except OSError:
+            print("An error occured when attempting to open image")
     text_layer = Image.new('RGBA', (image.size[0], image.size[1]), None)  # Text-layer
 
 # Create draw-object
@@ -103,7 +108,6 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
 def main():
     while True:
         verse = select_quote()
-        # ----- Download imgage ----- #
         get_img()
         put_quote_on_wallpaper('photo_of_the_day.jpg', verse)
 
