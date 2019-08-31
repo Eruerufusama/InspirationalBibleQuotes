@@ -5,6 +5,7 @@ from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from textwrap import wrap
 import bot
 from time import sleep
+from sys import platform
 
 
 def select_header():
@@ -59,7 +60,10 @@ def get_img():
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
     lines = wrap(biblequote, 40)  # Split verse into multiple lines if needed
-    font = ImageFont.truetype("/usr/share/fonts/truetype/roboto/hinted/Roboto-Medium.ttf", 48)  # Define font-parameters
+    if platform == "linux":
+        font = ImageFont.truetype("/usr/share/fonts/truetype/roboto/hinted/Roboto-Medium.ttf", 48)  # Define font-parameters
+    if platform == "win32":
+        font = ImageFont.truetype("fonts/truetype/arial.ttf", 48)
 
 # Open layers
     image = Image.open(wallpaper)  # Background
@@ -105,7 +109,7 @@ def main():
 
         tweet = create_header()
         # ----- Upload img to twitter ----- #
-        # bot.main(tweet)
+        bot.main(tweet)
         sleep(60)
 
 

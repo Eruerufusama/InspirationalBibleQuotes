@@ -14,4 +14,4 @@ def main(header):
 
     # FAKTISK BRUK AV API
     # api.update_status("Tweet") # Dette er legit ossn man tweeter.
-    api.update_with_media('photo_of_the_day.png', header)
+    api.update_with_media('photo_of_the_day.jpg', header)
