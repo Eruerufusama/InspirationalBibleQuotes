@@ -55,17 +55,14 @@ def select_quote():
 def get_img():
     pic_num = random.randint(2, 1084)
     print(pic_num)
-    url = 'https://picsum.photos/1080/1920'
+    url = 'https://picsum.photos/1080/1080/'
     urllib.request.urlretrieve(url, './photo_of_the_day.jpg')
     sleep(2)
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
     lines = wrap(biblequote, 40)  # Split verse into multiple lines if needed
-    if platform == "linux":
-        font = ImageFont.truetype("/usr/share/fonts/truetype/roboto/hinted/Roboto-Medium.ttf", 48)  # Define font-parameters
-    if platform == "win32":
-        font = ImageFont.truetype("fonts/truetype/arial.ttf", 48)
+    font = ImageFont.truetype('./fonts/Roboto-Medium.ttf', 48)  # Define font-parameters
 
 # Open layers
     image = Image.open(wallpaper)  # Background
@@ -97,7 +94,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
     image.paste(text_layer, (0, 0), text_layer)
 
 # Debug
-    #image.show()
+    image.show()
 
     image.save('./photo_of_the_day.jpg')
 
@@ -110,7 +107,7 @@ def main():
 
         tweet = create_header()
         # ----- Upload img to twitter ----- #
-        bot.main(tweet)
+        # bot.main(tweet)
         sleep(60)
 
 
