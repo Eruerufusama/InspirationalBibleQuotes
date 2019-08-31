@@ -108,7 +108,7 @@ def main():
         tweet = create_header()
         # ----- Upload img to twitter ----- #
         bot.main(tweet)
-        sleep(60)
+        sleep(3600)
 
 
 if __name__ == '__main__':
