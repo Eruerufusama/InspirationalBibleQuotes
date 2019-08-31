@@ -57,6 +57,7 @@ def get_img():
     print(pic_num)
     url = 'https://picsum.photos/1080/1920'
     urllib.request.urlretrieve(url, './photo_of_the_day.jpg')
+    sleep(2)
 
 
 def put_quote_on_wallpaper(wallpaper, biblequote):
