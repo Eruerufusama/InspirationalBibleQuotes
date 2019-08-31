@@ -94,7 +94,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
     image.paste(text_layer, (0, 0), text_layer)
 
 # Debug
-    image.show()
+    # image.show()
 
     image.save('./photo_of_the_day.jpg')
 
