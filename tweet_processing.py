@@ -28,4 +28,6 @@ def fill_header_with_emojis(header, meme_amplitude):
                 returnstring += choice(emojis)
     return returnstring
 
-    
+
+def create_probability_distribution(li):
+    pass
