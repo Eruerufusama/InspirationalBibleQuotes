@@ -1,5 +1,6 @@
 import tweepy  # Twitter module
 
+
 def bot(header):
     # Sånne greier vi trenger for autentikasjon
     api_key, api_secret = "WO1t9lUsG8OjAoEnJrU37Ohzd", "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2"
