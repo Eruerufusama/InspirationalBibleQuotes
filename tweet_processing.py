@@ -8,7 +8,9 @@ def create_header():
 
 def select_header():
     with open('tweet_headers.txt') as header:
-        return choice(header.read().split("\n"))
+        message = choice(header.read().split("\n\n"))
+        print(message)
+        return message
 
 
 def fill_header_with_emojis(header, meme_amplitude):
