@@ -1,3 +1,4 @@
+from random import randint
 from time import sleep
 from bot import bot
 from pre_processing import select_quote, get_img
