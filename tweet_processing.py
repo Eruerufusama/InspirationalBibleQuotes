@@ -18,11 +18,12 @@ def fill_header_with_emojis(header, meme_amplitude):
         emojis = emoji_file.read().split()
         split_header = header.split()
 
-        max_chars = 280
+        max_chars = 240
         # Remaining number of characters allowed in a tweet
         remaining_chars = max_chars - len(''.join(split_header)) - (meme_amplitude * 2)
         # Average emojis per word in tweet
-        avg = remaining_chars / (len(split_header) - 1)
+        print(remaining_chars, len(split_header))
+        avg = remaining_chars / (len(split_header))
 
         premojis = ''.join([choice(emojis) for i in range(meme_amplitude)])
         postmojis = ''.join([choice(emojis) for i in range(meme_amplitude)])
