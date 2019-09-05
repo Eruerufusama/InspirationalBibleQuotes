@@ -1,5 +1,7 @@
 from random import choice, randint
+import numpy.random as numpy
 import pre_processing
+import admin_emoji
 
 
 def create_header():
@@ -14,37 +16,36 @@ def select_header():
 
 
 def fill_header_with_emojis(header, meme_amplitude):
-    with open("emojis.txt", encoding="utf-8") as emoji_file:
-        emojis = emoji_file.read().split()
-        split_header = header.split()
 
-        max_chars = 240
-        # Remaining number of characters allowed in a tweet
-        remaining_chars = max_chars - len(''.join(split_header)) - (meme_amplitude * 2)
-        # Average emojis per word in tweet
-        print(remaining_chars, len(split_header))
-        avg = remaining_chars / (len(split_header))
+    emoji_dict = admin_emoji.json_to_dict('emojis.json')
+    split_header = header.split()
 
-        premojis = ''.join([choice(emojis) for i in range(meme_amplitude)])
-        postmojis = ''.join([choice(emojis) for i in range(meme_amplitude)])
-        emojified_message = ''
+    max_chars = 240
+    # Remaining number of characters allowed in a tweet
+    remaining_chars = max_chars - len(''.join(split_header)) - (meme_amplitude * 2)
+    # Average emojis per word in tweet
+    avg = remaining_chars / (len(split_header))
 
-        # If tweet is to long to add emojis between words
-        if avg < 1:
-            returnstring = premojis + header + postmojis
+    emoji_keys = list(emoji_dict.keys())
+    emoji_values = list(emoji_dict.values())
+    premojis = ''.join(numpy.choice(emoji_keys, size=meme_amplitude, p=emoji_values))
+    postmojis = ''.join(numpy.choice(emoji_keys, size=meme_amplitude, p=emoji_values))
+    emojified_message = ''
 
-        else:
-            for i, word in enumerate(split_header, 1):
-                emojified_message += word
-                # Don't add emojis behind last word, postmojis covers this.
-                if i == len(split_header):
-                    break
-                # Insert random number of emojis if average is less than 5
-                for i in range(randint(1, int(avg) if avg < 5 else 5)):
-                    # Replace with function returning emojis relative to probability
-                    emojified_message += choice(emojis)
+    # If tweet is to long to add emojis between words
+    if avg < 1:
+        returnstring = premojis + header + postmojis
 
-        returnstring = premojis + emojified_message + postmojis
-        print(returnstring)
-        print(len(returnstring))
+    else:
+        for i, word in enumerate(split_header, 1):
+            emojified_message += word
+            # Don't add emojis behind last word, postmojis covers this.
+            if i == len(split_header):
+                break
+            # Insert random number of emojis if average is less than 5
+            for i in range(randint(1, int(avg) if avg < 5 else 5)):
+                # Replace with function returning emojis relative to probability
+                emojified_message += ''.join(numpy.choice(emoji_keys, size=1, p=emoji_values))
+
+    returnstring = premojis + emojified_message + postmojis
     return returnstring

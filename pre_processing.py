@@ -4,13 +4,12 @@ from time import sleep
 from re import split
 
 
-
 def select_quote():
     with open('bible_verses.txt') as bible:
         bible = bible.read()
         bible_list = split('\d\d?\:\d\d?', bible)
         verse = choice(bible_list)
-# ----- Remove verse number from line ----- #
+        # Remove verse number from line
         verse = verse[verse.find(' ') + 1:].rstrip()
         return verse
 
