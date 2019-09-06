@@ -45,8 +45,15 @@ if __name__ == '__main__':
     if len(argv) > 1:
         json_file = 'emojis.json'
         dict_emoji = json_to_dict(json_file)
-        emoji = argv[1]
-        value = int(argv[2])
+        try:
+            if argv[1] == 'add':
+                emoji = argv[2]
+                value = int(argv[3])
+                dct = append_emoji(dict_emoji, emoji, value)
+            elif argv[1] == 'rm':
+                del dict_emoji[argv[2]]
+                dct = dict_emoji
 
-        dct = append_emoji(dict_emoji, emoji, value)
-        write_to_json(json_file, dct)
+            write_to_json(json_file, dct)
+        except:
+            print('Unknown parameter. Format: admin_emoji.py \{emoji} \{value}')

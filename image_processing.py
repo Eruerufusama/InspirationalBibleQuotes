@@ -56,6 +56,6 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
       pre_processing.get_img()
 
 # Debug
-  image.show()
+  #image.show()
 
   image.save('./photo_of_the_day.jpg')
