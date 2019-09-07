@@ -5,14 +5,15 @@ import admin_emoji
 
 
 def create_header():
-    header = select_header()
-    return fill_header_with_emojis(header, 6)
+    header, index = select_header()
+    return fill_header_with_emojis(header, 6), index
 
 
 def select_header():
     with open('../resources/tweet_headers.txt') as header:
-        message = choice(header.read().split("\n\n"))
-        return message
+        headers = header.read().split("\n\n")
+        index = randint(0, len(headers) - 1)
+        return headers[index], index
 
 
 def fill_header_with_emojis(header, meme_amplitude):

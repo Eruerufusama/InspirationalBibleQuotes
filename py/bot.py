@@ -14,5 +14,5 @@ def bot(header):
   # Tweet
   print("Posting image.")
   api.update_with_media('../resources/photo_of_the_day.jpg', header)
-  #exit()
+  # exit()
   print("Image posted.")

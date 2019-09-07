@@ -46,7 +46,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
   # Variables
   max_characters_per_line = 40
   text_align_horizontal = "left"
-  text_align_vertical = "middle"
+  text_align_vertical = "center"
   shadow_offset = 2
 
 
@@ -55,7 +55,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
   # Create layers
   image = Image.open(wallpaper)  # Background
   text_layer = create_text_layer(image.size, lines, text_align_horizontal, text_align_vertical, shadow_offset)
-  
+
   # Merges layers
   while True:
     try:
@@ -65,6 +65,6 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
       pre_processing.get_img()
 
 # Debug
-  image.show()
+  #image.show()
 
   image.save('../resources/photo_of_the_day.jpg')
