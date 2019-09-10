@@ -5,7 +5,6 @@ from pre_processing import select_quote, get_img, json_to_dict
 from image_processing import put_quote_on_wallpaper
 from tweet_processing import create_header
 import logger
-# import requests # pip install requests
 
 if __name__ == '__main__':
     while True:

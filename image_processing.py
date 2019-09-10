@@ -27,6 +27,10 @@ def create_text_layer(canvas_size, lines, settings):
     y = int(canvas_size[1] * margin)
   elif text_align_vertical.lower() == "bottom":
     y = int(canvas_size[1] * (1 - margin) - paragraph_height)
+  else:
+    print("Please specify a valid vertical text-alignment. You can change it in settings.json")
+    print("Valid vertical-alignments: 'top', 'center', 'bottom'")
+    exit()
 
   for line in lines:
     # Define some variables on each iteration
@@ -37,6 +41,10 @@ def create_text_layer(canvas_size, lines, settings):
       start_position = canvas_size[0] * margin
     elif text_align_horizontal.lower() == "right":
       start_position = canvas_size[0] * (1 - margin) - text_width
+    else:
+      print("Please specify a valid horizontal text-alignment. You can change it in settings.json")
+      print("Valid horizontal-alignments: 'left', 'center', 'right'")
+      exit()
 
     # Draw actual text
     if shadow_offset > 0:
@@ -56,7 +64,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote, settings):
 
   # Create layers
   image = Image.open(wallpaper)  # Background
-  text_layer = create_text_layer(image.size, lines, settings)
+  text_layer = create_text_layer(image.size, lines, settings) # Text
 
   # Merges layers
   while True:
