@@ -13,7 +13,7 @@ if __name__ == '__main__':
     start = time()
 
     # Load settings
-    settings = json_to_dict("/resources/settings.json")
+    settings = json_to_dict("./resources/settings.json")
 
     # Selects a verse from the bible
     verse, verse_index = select_quote()
