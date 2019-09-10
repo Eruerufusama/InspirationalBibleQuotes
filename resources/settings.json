@@ -1,9 +1,9 @@
 {
   "text": {
     "text from source": "./resources/bible_verses.txt",
-    "horizontal_align": "center",
-    "vertical_align": "center",
-    "shadow_offset": 2,
+    "horizontal align": "center",
+    "vertical align": "center",
+    "shadow offset": 2,
     "font": "./fonts/Roboto-Medium.ttf",
     "font-size": 44,
     "characters per line": 40

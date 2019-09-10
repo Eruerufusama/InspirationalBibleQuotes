@@ -1,5 +1,5 @@
+from pre_processing import json_to_dict, write_to_json
 from sys import argv
-import json
 
 
 def create_probability_distribution(li):
@@ -28,21 +28,9 @@ def append_emoji(dct, elem, val):
     return percentage_dict
 
 
-def json_to_dict(json_file):
-    with open(json_file) as json_file:
-        j_emoji = json.load(json_file)
-        return dict(j_emoji)
-
-
-def write_to_json(json_file, dct):
-    with open(json_file, 'w') as json_file:
-        print(dct)
-        json.dump(dct, json_file)
-
-
 if __name__ == '__main__':
     if len(argv) > 1:
-        json_file = '../resources/emojis.json'
+        json_file = './resources/emojis.json'
         dict_emoji = json_to_dict(json_file)
         try:
             if argv[1] == 'add':

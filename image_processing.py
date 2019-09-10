@@ -2,8 +2,15 @@ from PIL import Image, ImageFont, ImageDraw, ImageFilter    # pip install Pillow
 from textwrap import wrap
 import pre_processing
 
-def create_text_layer(canvas_size, lines, text_align_horizontal, text_align_vertical, shadow_offset):
-  font = ImageFont.truetype('../fonts/Roboto-Medium.ttf', 44)  # Define font-parameters
+def create_text_layer(canvas_size, lines, settings):
+  text_align_horizontal = settings["text"]["horizontal align"]
+  text_align_vertical = settings["text"]["vertical align"]
+  shadow_offset = settings["text"]["shadow offset"]
+  font_type = settings["text"]["font"]
+  font_size = settings["text"]["font-size"]
+  margin = settings["canvas"]["margin"]
+  
+  font = ImageFont.truetype(font_type, font_size)  # Define font-parameters
   # Create layer
   text_layer = Image.new('RGBA', (canvas_size[0], canvas_size[1]), None)  # Text-layer
 
@@ -13,7 +20,6 @@ def create_text_layer(canvas_size, lines, text_align_horizontal, text_align_vert
   # Vars
   text_height = font.getsize(lines[0])[1]
   paragraph_height = text_height * len(lines)
-  margin = 0.1
 
   if text_align_vertical.lower() == "center":
     y = int(canvas_size[1] / 2 - paragraph_height / 2)
@@ -42,19 +48,15 @@ def create_text_layer(canvas_size, lines, text_align_horizontal, text_align_vert
 
   return text_layer
 
-def put_quote_on_wallpaper(wallpaper, biblequote):
+def put_quote_on_wallpaper(wallpaper, biblequote, settings):
   # Variables
-  max_characters_per_line = 40
-  text_align_horizontal = "left"
-  text_align_vertical = "center"
-  shadow_offset = 2
-
+  max_characters_per_line = settings["text"]["characters per line"]
 
   lines = wrap(biblequote, max_characters_per_line)  # Split verse into multiple lines if needed
 
   # Create layers
   image = Image.open(wallpaper)  # Background
-  text_layer = create_text_layer(image.size, lines, text_align_horizontal, text_align_vertical, shadow_offset)
+  text_layer = create_text_layer(image.size, lines, settings)
 
   # Merges layers
   while True:
@@ -67,4 +69,4 @@ def put_quote_on_wallpaper(wallpaper, biblequote):
 # Debug
   #image.show()
 
-  image.save('../resources/photo_of_the_day.jpg')
+  image.save('./resources/photo_of_the_day.jpg')
