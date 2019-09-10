@@ -72,4 +72,4 @@ def put_quote_on_wallpaper(wallpaper, biblequote, settings):
 # Debug
   # image.show()
 
-  image.save(sys.path[0] + './resources/photo_of_the_day.jpg')
+  image.save(sys.path[0] + '/resources/photo_of_the_day.jpg')

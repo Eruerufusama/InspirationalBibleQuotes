@@ -10,7 +10,7 @@ def create_header():
 
 
 def select_header():
-    with open(sys.path[0] + './resources/tweet_headers.txt') as header:
+    with open(sys.path[0] + '/resources/tweet_headers.txt') as header:
         headers = header.read().split("\n\n")
         index = randint(0, len(headers) - 1)
         return headers[index], index
@@ -18,7 +18,7 @@ def select_header():
 
 def fill_header_with_emojis(header, meme_amplitude):
 
-    emoji_dict = json_to_dict(sys.path[0] + './resources/emojis.json')
+    emoji_dict = json_to_dict(sys.path[0] + '/resources/emojis.json')
     split_header = header.split()
 
     max_chars = 240
