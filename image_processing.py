@@ -8,7 +8,7 @@ def create_text_layer(canvas_size, lines, settings):
   text_align_horizontal = settings["text"]["horizontal align"]
   text_align_vertical = settings["text"]["vertical align"]
   shadow_offset = settings["text"]["shadow offset"]
-  font_type = settings["text"]["font"]
+  font_type = sys.path[0] + settings["text"]["font"]
   font_size = settings["text"]["font-size"]
   margin = settings["canvas"]["margin"]
 
