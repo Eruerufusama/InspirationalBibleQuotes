@@ -1,3 +1,4 @@
+import sys
 from random import randint
 from time import time, sleep
 from bot import bot
@@ -8,6 +9,12 @@ import logger
 # import requests # pip install requests
 
 if __name__ == '__main__':
+
+    CLASS_PATH = '/srv/www/live/mainapp/classes'
+    SETTINGS_PATH = '/srv/www/live/foodtrade'
+    sys.path.insert(0, CLASS_PATH)
+    sys.path.insert(1, SETTINGS_PATH)
+
     # Starts timer
     start = time()
 
