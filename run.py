@@ -9,17 +9,11 @@ import logger
 # import requests # pip install requests
 
 if __name__ == '__main__':
-
-    CLASS_PATH = '/srv/www/live/mainapp/classes'
-    SETTINGS_PATH = '/srv/www/live/foodtrade'
-    sys.path.insert(0, CLASS_PATH)
-    sys.path.insert(1, SETTINGS_PATH)
-
     # Starts timer
     start = time()
 
     # Load settings
-    settings = json_to_dict("./resources/settings.json")
+    settings = json_to_dict("/resources/settings.json")
 
     # Selects a verse from the bible
     verse, verse_index = select_quote()
