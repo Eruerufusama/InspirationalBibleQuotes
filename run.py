@@ -8,18 +8,15 @@ import logger
 # import requests # pip install requests
 
 if __name__ == '__main__':
-    while True:
-        settings = json_to_dict("./resources/settings.json")
-
-        start = time()
-        verse, verse_index = select_quote()
-        get_img(settings)
-        put_quote_on_wallpaper('./resources/photo_of_the_day.jpg', verse, settings)
-        tweet, header_index = create_header()
-        # ----- Upload img to twitter ----- #
-        bot(tweet)
-        logger.log(verse_index, header_index)
-        end = time()
-        total = end - start
-        print(f'Time spent: {total}')
-        sleep(randint(2600, 3600))
+    settings = json_to_dict("./resources/settings.json")
+    start = time()
+    verse, verse_index = select_quote()
+    get_img(settings)
+    put_quote_on_wallpaper('./resources/photo_of_the_day.jpg', verse, settings)
+    tweet, header_index = create_header()
+    # ----- Upload img to twitter ----- #
+    bot(tweet)
+    logger.log(verse_index, header_index)
+    end = time()
+    total = end - start
+    print(f'Time spent: {total}')
