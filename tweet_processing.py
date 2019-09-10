@@ -1,7 +1,6 @@
 from random import choice, randint
 import numpy.random as numpy
-import pre_processing
-import admin_emoji
+from pre_processing import json_to_dict
 
 
 def create_header():
@@ -18,13 +17,14 @@ def select_header():
 
 def fill_header_with_emojis(header, meme_amplitude):
 
-    emoji_dict = admin_emoji.json_to_dict('./resources/emojis.json')
+    emoji_dict = json_to_dict('./resources/emojis.json')
     split_header = header.split()
 
     max_chars = 240
     # Remaining number of characters allowed in a tweet
     remaining_chars = max_chars - len(''.join(split_header)) - (meme_amplitude * 2)
     # Average emojis per word in tweet
+    print(remaining_chars)
     avg = remaining_chars / (len(split_header))
 
     emoji_keys = list(emoji_dict.keys())

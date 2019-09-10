@@ -13,6 +13,7 @@ def select_quote():
 
 
 def get_img(settings):
+    # Assign settings from settings.json
     width = settings["canvas"]["size"]["width"]
     height = settings["canvas"]["size"]["height"]
     filetype = settings["image-data"]["filetype"]
