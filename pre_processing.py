@@ -1,3 +1,4 @@
+import sys
 from random import randint, choice
 from urllib.request import urlretrieve
 from time import sleep
@@ -5,7 +6,7 @@ import json
 
 
 def select_quote():
-    with open(sys.path()[0] + './resources/bible_list.txt') as bible:
+    with open(sys.path[0] + './resources/bible_list.txt') as bible:
         bible = bible.read()
         bible_list = bible.split('\n')
         index = randint(0, len(bible_list) - 1)

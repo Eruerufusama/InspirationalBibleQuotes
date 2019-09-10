@@ -1,6 +1,8 @@
+import sys
 from PIL import Image, ImageFont, ImageDraw, ImageFilter    # pip install Pillow
 from textwrap import wrap
 import pre_processing
+
 
 def create_text_layer(canvas_size, lines, settings):
   text_align_horizontal = settings["text"]["horizontal align"]
@@ -40,13 +42,14 @@ def create_text_layer(canvas_size, lines, settings):
 
     # Draw actual text
     if shadow_offset > 0:
-      draw.text((start_position + shadow_offset, y + shadow_offset), line, "black", font) # Shadow
-    draw.text((start_position, y), line, "white", font) # Overlaid text
+      draw.text((start_position + shadow_offset, y + shadow_offset), line, "black", font)  # Shadow
+    draw.text((start_position, y), line, "white", font)  # Overlaid text
 
     # Move down to draw next line
     y += text_height
 
   return text_layer
+
 
 def put_quote_on_wallpaper(wallpaper, biblequote, settings):
   # Variables
@@ -67,6 +70,6 @@ def put_quote_on_wallpaper(wallpaper, biblequote, settings):
       pre_processing.get_img()
 
 # Debug
-  #image.show()
+  # image.show()
 
-  image.save( sys.path()[0] +'./resources/photo_of_the_day.jpg')
+  image.save(sys.path[0] + './resources/photo_of_the_day.jpg')

@@ -13,7 +13,7 @@ if __name__ == '__main__':
     start = time()
 
     # Load settings
-    settings = json_to_dict(sys.path()[0] + "/resources/settings.json")
+    settings = json_to_dict(sys.path[0] + "/resources/settings.json")
 
     # Selects a verse from the bible
     verse, verse_index = select_quote()
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     get_img(settings)
 
     # Processes bible-verse onto image.
-    put_quote_on_wallpaper(sys.path()[0] + '/resources/photo_of_the_day.jpg', verse, settings)
+    put_quote_on_wallpaper(sys.path[0] + '/resources/photo_of_the_day.jpg', verse, settings)
 
     # Creates tweet-header
     tweet, header_index = create_header()

@@ -1,3 +1,4 @@
+import sys
 import tweepy  # Twitter module
 
 
@@ -13,6 +14,6 @@ def bot(header):
 
   # Tweet
   print("Posting image.")
-  api.update_with_media(sys.path()[0] + './resources/photo_of_the_day.jpg', header)
+  api.update_with_media(sys.path[0] + './resources/photo_of_the_day.jpg', header)
   # exit()
   print("Image posted.")
