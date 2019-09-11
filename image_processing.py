@@ -11,7 +11,6 @@ def create_text_layer(canvas_size, lines, settings):
   font_type = sys.path[0] + settings["text"]["font"]
   font_size = settings["text"]["font-size"]
   margin = settings["canvas"]["margin"]
-
   font = ImageFont.truetype(font_type, font_size)  # Define font-parameters
   # Create layer
   text_layer = Image.new('RGBA', (canvas_size[0], canvas_size[1]), None)  # Text-layer
@@ -67,7 +66,7 @@ def put_quote_on_wallpaper(wallpaper, biblequote, settings):
       image.paste(text_layer, (0, 0), text_layer)
       break
     except:
-      pre_processing.get_img()
+      pre_processing.get_img(settings)
 
 # Debug
   # image.show()
