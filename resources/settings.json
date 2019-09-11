@@ -1,0 +1,22 @@
+{
+  "text": {
+    "text from source": "./resources/bible_verses.txt",
+    "horizontal align": "center",
+    "vertical align": "center",
+    "shadow offset": 2,
+    "font": "/fonts/Roboto-Medium.ttf",
+    "font-size": 44,
+    "characters per line": 40
+  },
+  "canvas": {
+    "size": {
+      "width": 1080,
+      "height": 1080
+    },
+    "margin": 0.1
+  },
+  "image-data": {
+    "filetype": ".jpg",
+    "quality": 100
+  }
+}
