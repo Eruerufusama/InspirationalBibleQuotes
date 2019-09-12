@@ -27,7 +27,7 @@ def get_img(settings):
         urlretrieve(url, sys.path[0] + f'/resources/photo_of_the_day{filetype}')
         sleep(2)
     except OSError:
-        get_img()
+        get_img(settings)
 
 
 def json_to_dict(json_file):
