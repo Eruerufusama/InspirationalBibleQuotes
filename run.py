@@ -7,35 +7,33 @@ from tweet_processing import create_header
 import logger
 
 if __name__ == '__main__':
-    while True:
-        # Starts timer
-        start = time()
+    # Starts timer
+    start = time()
 
-        # Load settings
-        settings = json_to_dict("./resources/settings.json")
+    # Load settings
+    settings = json_to_dict("./resources/settings.json")
 
-        # Selects a verse from the bible
-        verse, verse_index = select_quote()
+    # Selects a verse from the bible
+    verse, verse_index = select_quote()
 
-        # Retrieves an image.
-        get_img(settings)
+    # Retrieves an image.
+    get_img(settings)
 
-        # Processes bible-verse onto image.
-        put_quote_on_wallpaper('./resources/photo_of_the_day.jpg', verse, settings)
+    # Processes bible-verse onto image.
+    put_quote_on_wallpaper('./resources/photo_of_the_day.jpg', verse, settings)
 
-        # Creates tweet-header
-        tweet, header_index = create_header()
+    # Creates tweet-header
+    tweet, header_index = create_header()
 
-        # Uploads image and tweet-header to twitter
-        bot(tweet)
+    # Uploads image and tweet-header to twitter
+    bot(tweet)
 
-        # Writes debug-info to log-file
-        logger.log(verse_index, header_index)
+    # Writes debug-info to log-file
+    logger.log(verse_index, header_index)
 
-        # Stops timer
-        end = time()
-        total = end - start
-        print(f'Time spent: {total}')
+    # Stops timer
+    end = time()
+    total = end - start
+    print(f'Time spent: {total}')
 
-        # The program sleeps for x amount of seconds
-        sleep(randint(2600, 3600))
+    # The program sleeps for x amount of seconds
