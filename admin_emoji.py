@@ -1,3 +1,4 @@
+import sys
 from pre_processing import json_to_dict, write_to_json
 from sys import argv
 
@@ -30,7 +31,7 @@ def append_emoji(dct, elem, val):
 
 if __name__ == '__main__':
     if len(argv) > 1:
-        json_file = './resources/emojis.json'
+        json_file = sys.path[0] + '/resources/emojis.json'
         dict_emoji = json_to_dict(json_file)
         try:
             if argv[1] == 'add':

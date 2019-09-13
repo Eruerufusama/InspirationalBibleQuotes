@@ -1,3 +1,4 @@
+import sys
 from random import randint, choice
 from urllib.request import urlretrieve
 from time import sleep
@@ -5,9 +6,11 @@ import json
 
 
 def select_quote():
-    with open('./resources/bible_list.txt') as bible:
+    with open(sys.path[0] + '/resources/bible_list.txt') as bible:
         bible = bible.read()
         bible_list = bible.split('\n')
+        if bible_list[-1] == '':
+            del bible_list[-1]
         index = randint(0, len(bible_list) - 1)
         return bible_list[index], index
 
@@ -21,10 +24,10 @@ def get_img(settings):
     try:
         pic_num = randint(2, 1084)
         url = f'https://picsum.photos/{width}/{height}/'
-        urlretrieve(url, f'./resources/photo_of_the_day{filetype}')
+        urlretrieve(url, sys.path[0] + f'/resources/photo_of_the_day{filetype}')
         sleep(2)
     except OSError:
-        get_img()
+        get_img(settings)
 
 
 def json_to_dict(json_file):
