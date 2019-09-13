@@ -1,3 +1,4 @@
+import sys
 from random import randint
 from time import time, sleep
 from bot import bot
@@ -11,7 +12,11 @@ if __name__ == '__main__':
     start = time()
 
     # Load settings
+<<<<<<< HEAD
     settings = json_to_dict("./resources/settings.json")
+=======
+    settings = json_to_dict(sys.path[0] + "/resources/settings.json")
+>>>>>>> sias_test
 
     # Selects a verse from the bible
     verse, verse_index = select_quote()
@@ -20,7 +25,7 @@ if __name__ == '__main__':
     get_img(settings)
 
     # Processes bible-verse onto image.
-    put_quote_on_wallpaper('./resources/photo_of_the_day.jpg', verse, settings)
+    put_quote_on_wallpaper(sys.path[0] + '/resources/photo_of_the_day.jpg', verse, settings)
 
     # Creates tweet-header
     tweet, header_index = create_header()
