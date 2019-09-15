@@ -1,0 +1,258 @@
+[
+    {
+      "city": "Albuquerque",
+      "woeid": 2352824
+    },
+    {
+      "city": "Atlanta",
+      "woeid": 2357024
+    },
+    {
+      "city": "Austin",
+      "woeid": 2357536
+    },
+    {
+      "city": "Baltimore",
+      "woeid": 2358820
+    },
+    {
+      "city": "Baton Rouge",
+      "woeid": 2359991
+    },
+    {
+      "city": "Birmingham",
+      "woeid": 2364559
+    },
+    {
+      "city": "Boston",
+      "woeid": 2367105
+    },
+    {
+      "city": "Charlotte",
+      "woeid": 2378426
+    },
+    {
+      "city": "Chicago",
+      "woeid": 2379574
+    },
+    {
+      "city": "Cincinnati",
+      "woeid": 2380358
+    },
+    {
+      "city": "Cleveland",
+      "woeid": 2381475
+    },
+    {
+      "city": "Colorado Springs",
+      "woeid": 2383489
+    },
+    {
+      "city": "Columbus",
+      "woeid": 2383660
+    },
+    {
+      "city": "Dallas-Ft. Worth",
+      "woeid": 2388929
+    },
+    {
+      "city": "Denver",
+      "woeid": 2391279
+    },
+    {
+      "city": "Detroit",
+      "woeid": 2391585
+    },
+    {
+      "city": "El Paso",
+      "woeid": 2397816
+    },
+    {
+      "city": "Fresno",
+      "woeid": 2407517
+    },
+    {
+      "city": "Greensboro",
+      "woeid": 2414469
+    },
+    {
+      "city": "Harrisburg",
+      "woeid": 2418046
+    },
+    {
+      "city": "Honolulu",
+      "woeid": 2423945
+    },
+    {
+      "city": "Houston",
+      "woeid": 2424766
+    },
+    {
+      "city": "Indianapolis",
+      "woeid": 2427032
+    },
+    {
+      "city": "Jackson",
+      "woeid": 2428184
+    },
+    {
+      "city": "Jacksonville",
+      "woeid": 2428344
+    },
+    {
+      "city": "Kansas City",
+      "woeid": 2430683
+    },
+    {
+      "city": "Las Vegas",
+      "woeid": 2436704
+    },
+    {
+      "city": "Long Beach",
+      "woeid": 2441472
+    },
+    {
+      "city": "Los Angeles",
+      "woeid": 2442047
+    },
+    {
+      "city": "Louisville",
+      "woeid": 2442327
+    },
+    {
+      "city": "Memphis",
+      "woeid": 2449323
+    },
+    {
+      "city": "Mesa",
+      "woeid": 2449808
+    },
+    {
+      "city": "Miami",
+      "woeid": 2450022
+    },
+    {
+      "city": "Milwaukee",
+      "woeid": 2451822
+    },
+    {
+      "city": "Minneapolis",
+      "woeid": 2452078
+    },
+    {
+      "city": "Nashville",
+      "woeid": 2457170
+    },
+    {
+      "city": "New Haven",
+      "woeid": 2458410
+    },
+    {
+      "city": "New Orleans",
+      "woeid": 2458833
+    },
+    {
+      "city": "New York",
+      "woeid": 2459115
+    },
+    {
+      "city": "Norfolk",
+      "woeid": 2460389
+    },
+    {
+      "city": "Oklahoma City",
+      "woeid": 2464592
+    },
+    {
+      "city": "Omaha",
+      "woeid": 2465512
+    },
+    {
+      "city": "Orlando",
+      "woeid": 2466256
+    },
+    {
+      "city": "Philadelphia",
+      "woeid": 2471217
+    },
+    {
+      "city": "Phoenix",
+      "woeid": 2471390
+    },
+    {
+      "city": "Pittsburgh",
+      "woeid": 2473224
+    },
+    {
+      "city": "Portland",
+      "woeid": 2475687
+    },
+    {
+      "city": "Providence",
+      "woeid": 2477058
+    },
+    {
+      "city": "Raleigh",
+      "woeid": 2478307
+    },
+    {
+      "city": "Richmond",
+      "woeid": 2480894
+    },
+    {
+      "city": "Sacramento",
+      "woeid": 2486340
+    },
+    {
+      "city": "St. Louis",
+      "woeid": 2486982
+    },
+    {
+      "city": "Salt Lake City",
+      "woeid": 2487610
+    },
+    {
+      "city": "San Antonio",
+      "woeid": 2487796
+    },
+    {
+      "city": "San Diego",
+      "woeid": 2487889
+    },
+    {
+      "city": "San Francisco",
+      "woeid": 2487956
+    },
+    {
+      "city": "San Jose",
+      "woeid": 2488042
+    },
+    {
+      "city": "Seattle",
+      "woeid": 2490383
+    },
+    {
+      "city": "Tallahassee",
+      "woeid": 2503713
+    },
+    {
+      "city": "Tampa",
+      "woeid": 2503863
+    },
+    {
+      "city": "Tucson",
+      "woeid": 2508428
+    },
+    {
+      "city": "Virginia Beach",
+      "woeid": 2512636
+    },
+    {
+      "city": "Washington",
+      "woeid": 2514815
+    },
+    {
+      "city": "United States",
+      "woeid": 23424977
+    }
+  ]
