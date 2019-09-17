@@ -40,7 +40,7 @@ def get_img(settings):
   try:
     pic_num = randint(2, 1084)
     url = f'https://picsum.photos/{width}/{height}/'
-    urlretrieve(url, sys.path[0] + f'/resources/photo_of_the_day{filetype}')
+    urlretrieve(url, sys.path[0] + f'/resources/photo_of_the_day.{filetype}')
     return pic_num
   except OSError:
     get_img(settings)

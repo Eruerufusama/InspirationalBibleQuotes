@@ -1,4 +1,5 @@
 import sys
+import os
 from random import randint
 from time import time, sleep
 from bot import bot
@@ -35,3 +36,4 @@ if __name__ == '__main__':
 
   # Writes debug-info to log-file
   logger.log(success, verse_index, header_index, pic_num, time_spent, None)
+  os.remove(sys.path[0] + '/resources/photo_of_the_day.jpg')
