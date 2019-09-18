@@ -19,7 +19,6 @@ def select_quote():
     index = randint(0, len(bible_list) - 1)
     return bible_list[index], index
 
-
 def get_img(settings):
     # Assign settings from settings.json
     width = settings["canvas"]["size"]["width"]
@@ -37,8 +36,7 @@ def get_img(settings):
 
     for i in [width, height]:
         if i < min_size or i > max_size:
-            print(f"Make sure the image is no larger than {max_size}px, and no smaller than {min_size}px.")
-            print("You can do this by respecifying the width and height in settings.json")
+            print(f"Make sure the image is no larger than {max_size}px, and no smaller than {min_size}px. \n You can do this by respecifying the width and height in settings.json")
 
 
     # Actual processing
@@ -50,17 +48,13 @@ def get_img(settings):
     except OSError:
         get_img(settings)
 
-
 def json_to_dict(json_file):
     with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
-        json_object = json.load(json_file)
-        return dict(json_object)
+        return dict(json.load(json_file))
 
 def json_to_list(json_file):
     with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
-        json_object = json.load(json_file)
-        return list(json_object)
-
+        return list(json.load(json_file))
 
 def write_to_json(json_file, dct):
     with open(sys.path[0] + json_file, 'w') as json_file:

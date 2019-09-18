@@ -15,7 +15,7 @@ api = tweepy.API(auth)
 def bot(header):
     # Tweet
     print("Posting image.")
-    api.update_with_media(sys.path[0] + '/resources/photo_of_the_day.jpg', header)
+    #api.update_with_media(sys.path[0] + '/resources/photo_of_the_day.jpg', header)
     print("Image posted.")
 
 def get_hashtags(location, settings):

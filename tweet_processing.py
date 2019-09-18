@@ -16,13 +16,18 @@ def select_header():
 
 
 def fill_header_with_emojis(header, meme_amplitude):
-
+    # Retrieves a dictionary of emojis and their probability-distribution.
     emoji_dict = json_to_dict('/resources/emojis.json')
+
+    # Takes the actual tweet and splits it into a list.
     split_header = header.split()
 
+    # Number of allowed characters in a tweet.
     max_chars = 240
-    # Remaining number of characters allowed in a tweet
+
+    # Remaining number of characters allowed in a tweet.
     remaining_chars = max_chars - len(''.join(split_header)) - (meme_amplitude * 2)
+
     # Average emojis per word in tweet
     print(remaining_chars)
     avg = remaining_chars / (len(split_header))
