@@ -3,7 +3,6 @@ from random import choice, randint
 import numpy.random as numpy
 from pre_processing import json_to_dict
 
-
 def create_header():
     header, index = select_header()
     return fill_header_with_emojis(header, 6), index
@@ -18,7 +17,7 @@ def select_header():
 
 def fill_header_with_emojis(header, meme_amplitude):
 
-    emoji_dict = json_to_dict(sys.path[0] + '/resources/emojis.json')
+    emoji_dict = json_to_dict('/resources/emojis.json')
     split_header = header.split()
 
     max_chars = 240

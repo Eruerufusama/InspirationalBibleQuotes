@@ -6,7 +6,13 @@
     "shadow offset": 2,
     "font": "/fonts/Roboto-Medium.ttf",
     "font-size": 44,
-    "characters per line": 40
+    "characters per line": 40,
+    "hashtags": {
+      "woeids": "/resources/woeid.json",
+      "keywords": "/resources/keywords.txt",
+      "cities to search": "/resources/list_of_cities.txt",
+      "searchspace": 10
+    }
   },
   "canvas": {
     "size": {

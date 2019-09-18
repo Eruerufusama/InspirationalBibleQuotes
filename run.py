@@ -12,11 +12,7 @@ if __name__ == '__main__':
     start = time()
 
     # Load settings
-<<<<<<< HEAD
-    settings = json_to_dict("./resources/settings.json")
-=======
-    settings = json_to_dict(sys.path[0] + "/resources/settings.json")
->>>>>>> sias_test
+    settings = json_to_dict("/resources/settings.json")
 
     # Selects a verse from the bible
     verse, verse_index = select_quote()

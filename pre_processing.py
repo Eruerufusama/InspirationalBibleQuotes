@@ -4,15 +4,20 @@ from urllib.request import urlretrieve
 from time import sleep
 import json
 
+# Opens a text-file and returns the content of the file in the form of a list.
+def file_to_list(filepath):
+    with open(sys.path[0] + filepath) as FILE:
+        FILE = FILE.read()
+        FILE_LIST = FILE.split('\n')
+        if FILE_LIST[-1] == '':
+            del FILE_LIST[-1]
+        return FILE_LIST
 
+# Opens the bible and assigns it an index. Returns a list of tuples, where every verse has an associated index.
 def select_quote():
-    with open(sys.path[0] + '/resources/bible_list.txt') as bible:
-        bible = bible.read()
-        bible_list = bible.split('\n')
-        if bible_list[-1] == '':
-            del bible_list[-1]
-        index = randint(0, len(bible_list) - 1)
-        return bible_list[index], index
+    bible_list = file_to_list('/resources/bible_list.txt')
+    index = randint(0, len(bible_list) - 1)
+    return bible_list[index], index
 
 
 def get_img(settings):
@@ -30,9 +35,10 @@ def get_img(settings):
         print(f"supported filetypes: {supported_files}")
         exit()
 
-    if [width, height] < min_size or [width, height] > max_size:
-        print(f"Make sure the image is no larger than {max_size}px, and no smaller than {min_size}px.")
-        print("You can do this by respecifying the width and height in settings.json")
+    for i in [width, height]:
+        if i < min_size or i > max_size:
+            print(f"Make sure the image is no larger than {max_size}px, and no smaller than {min_size}px.")
+            print("You can do this by respecifying the width and height in settings.json")
 
 
     # Actual processing
@@ -46,12 +52,17 @@ def get_img(settings):
 
 
 def json_to_dict(json_file):
-    with open(json_file, encoding="utf-8") as json_file:
+    with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
         json_object = json.load(json_file)
         return dict(json_object)
 
+def json_to_list(json_file):
+    with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
+        json_object = json.load(json_file)
+        return list(json_object)
+
 
 def write_to_json(json_file, dct):
-    with open(json_file, 'w') as json_file:
+    with open(sys.path[0] + json_file, 'w') as json_file:
         print(dct)
         json.dump(dct, json_file)
