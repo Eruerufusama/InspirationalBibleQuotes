@@ -13,7 +13,6 @@ api = tweepy.API(auth)
 
 
 def bot(header):
-<<<<<<< HEAD
     # Tweet
     print("Posting image.")
     api.update_with_media(sys.path[0] + '/resources/photo_of_the_day.jpg', header)
@@ -36,20 +35,3 @@ def get_hashtags(location, settings):
 if __name__ == "__main__":
     settings = json_to_dict("/resources/settings.json")
     get_hashtags("New York", settings)
-=======
-  # Sånne greier vi trenger for autentikasjon
-  api_key, api_secret = "WO1t9lUsG8OjAoEnJrU37Ohzd", "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2"
-  token_key, token_secret = "1166347129025155072-EaGxHUB9bUf5ImDmdyXOXPq4U5cZSZ", "bbJtob2GjLx4of2NwTYjMkw7OdBhhFzimufoFzySPFzKd"
-
-  try:
-    # Konstruksjon av et objekt vi kan bruke. bla bla bla--
-    auth = tweepy.OAuthHandler(api_key, api_secret)
-    auth.set_access_token(token_key, token_secret)
-    api = tweepy.API(auth)
-
-    # Tweet
-    api.update_with_media(sys.path[0] + '/resources/photo_of_the_day.jpg', header)
-    return True
-  except:
-    return False
->>>>>>> 99d865f1e24b14b0c454b6a83cc12924834b909c

@@ -8,8 +8,7 @@ import logger
 # Opens a text-file and returns the content of the file in the form of a list.
 def file_to_list(filepath):
     with open(sys.path[0] + filepath) as FILE:
-        FILE = FILE.read()
-        FILE_LIST = FILE.split('\n')
+        FILE_LIST = FILE.read().split('\n')
         if FILE_LIST[-1] == '':
             del FILE_LIST[-1]
         return FILE_LIST
@@ -46,7 +45,7 @@ def get_img(settings):
     try:
         pic_num = randint(2, 1084)
         url = f'https://picsum.photos/{width}/{height}/'
-        urlretrieve(url, sys.path[0] + f'/resources/photo_of_the_day{filetype}')
+        urlretrieve(url, sys.path[0] + f'/resources/photo_of_the_day.{filetype}')
         sleep(2)
     except OSError:
         get_img(settings)
