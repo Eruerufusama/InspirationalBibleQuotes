@@ -11,7 +11,7 @@
       "woeids": "/resources/woeid.json",
       "keywords": "/resources/keywords.txt",
       "cities to search": "/resources/list_of_cities.txt",
-      "searchspace": 10
+      "searchspace": 2
     }
   },
   "canvas": {
