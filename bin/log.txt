@@ -1,4 +1,4 @@
-success | time | bible_line | header_line | image_number | time_spent | comment
+success | date / time | bible_line | header_line | image_number | time_spent | comment
 True | 2019-09-17 11:25 | 3398 | 49 | 164 | 3.629 | None
 True | 2019-09-17 11:25 | 24112 | 49 | 495 | 3.378 | None
 True | 2019-09-17 11:26 | 2434 | 14 | 355 | 3.116 | None
