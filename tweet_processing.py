@@ -4,15 +4,15 @@ import numpy.random as numpy
 from pre_processing import json_to_dict
 
 def create_header():
-    header, index = select_header()
-    return fill_header_with_emojis(header, 6), index
+  header, index = select_header()
+  return fill_header_with_emojis(header, 6), index
 
 
 def select_header():
-    with open(sys.path[0] + '/resources/tweet_headers.txt') as header:
-        headers = header.read().split("\n\n")
-        index = randint(0, len(headers) - 1)
-        return headers[index], index
+  with open(sys.path[0] + '/resources/tweet_headers.txt') as header:
+    headers = header.read().split("\n\n")
+    index = randint(0, len(headers) - 1)
+    return headers[index], index
 
 
 def fill_header_with_emojis(header, meme_amplitude):

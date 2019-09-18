@@ -3,6 +3,7 @@ from random import randint, choice
 from urllib.request import urlretrieve
 from time import sleep
 import json
+import logger
 
 # Opens a text-file and returns the content of the file in the form of a list.
 def file_to_list(filepath):
