@@ -19,17 +19,36 @@ def bot(header):
     print("Image posted.")
 
 def get_hashtags(location, settings):
+    returnlist = []
+
     woeids = json_to_list(settings["text"]["hashtags"]["woeids"])
     keywords = file_to_list(settings["text"]["hashtags"]["keywords"])
     cities = file_to_list(settings["text"]["hashtags"]["cities to search"])
     searchspace = settings["text"]["hashtags"]["searchspace"]
 
     # Dette er den mest vederstyggerlige linjen noensinne skrevet.
-    hashtag_woeids = [woeid["woeid"] for i, city in enumerate(cities) if not i > searchspace for woeid in woeids if woeid["city"] == city]
-    pass
+    # hashtag_woeids = [woeid["woeid"] for i, city in enumerate(cities) if i < searchspace for woeid in woeids if woeid["city"] == city]
 
-
+    hashtag_woeids = []
+    for i, city in enumerate(cities):
+        for woeid in woeids:
+            if woeid["city"] == city:
+                hashtag_woeids.append(woeid["woeid"])
+                break
+        if i > searchspace:
+            break
     
+    for woeid in hashtag_woeids:
+        response = api.trends_place(woeid)
+        hashtags = [trend["name"] for trend in response[0]["trends"] if trend["name"][0] == '#']
+        
+        for keyword in keywords:
+            for hashtag in hashtags:
+                # Some advanced Regex would be fantastic here.
+                if keyword in hashtag and hashtag not in returnlist:
+                    returnlist.append(hashtag)
+    return returnlist
+
 
 
 if __name__ == "__main__":
