@@ -1,6 +1,7 @@
 import sys
 import tweepy  # Twitter module
 from pre_processing import json_to_list, file_to_list, json_to_dict
+from random import choice
 
 # Sånne greier vi trenger for autentikasjon
 api_key, api_secret = "WO1t9lUsG8OjAoEnJrU37Ohzd", "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2"
@@ -18,12 +19,12 @@ def bot(header):
     print("Image posted.")
 
 def get_hashtags(settings):
-    returnlist = []
+    hashtags = []
 
-    woeids = json_to_list(settings["text"]["hashtags"]["woeids"])
-    keywords = file_to_list(settings["text"]["hashtags"]["keywords"])
-    cities = file_to_list(settings["text"]["hashtags"]["cities to search"])
-    searchspace = settings["text"]["hashtags"]["searchspace"]
+    woeids = json_to_list(settings["text"]["all_hashtags"]["woeids"])
+    keywords = file_to_list(settings["text"]["all_hashtags"]["keywords"])
+    cities = file_to_list(settings["text"]["all_hashtags"]["cities to search"])
+    searchspace = settings["text"]["all_hashtags"]["searchspace"]
     
     hashtag_woeids = []
     for i, city in enumerate(cities):
@@ -36,15 +37,15 @@ def get_hashtags(settings):
     
     for woeid in hashtag_woeids:
         response = api.trends_place(woeid)
-        hashtags = [trend["name"] for trend in response[0]["trends"] if trend["name"][0] == '#']
+        all_hashtags = [trend["name"] for trend in response[0]["trends"] if trend["name"][0] == '#']
         
         for keyword in keywords:
-            for hashtag in hashtags:
+            for hashtag in all_hashtags:
                 # Some advanced Regex would be fantastic here.
-                if keyword in hashtag and hashtag not in returnlist:
-                    returnlist.append(hashtag)
+                if keyword in hashtag and hashtag not in hashtags:
+                    hashtags.append(hashtag)
 
-    return returnlist
+    return choice(hashtags)
 
 if __name__ == "__main__":
     get_hashtags(json_to_dict('/resources/settings.json'))

@@ -5,8 +5,7 @@ from sys import argv
 
 def create_probability_distribution(li):
     li_multiplyer = 100 / sum(li)
-    li_out = [(i * li_multiplyer) / 100 for i in li]
-    return li_out
+    return [(i * li_multiplyer) / 100 for i in li]
 
 
 def append_emoji(dct, elem, val):
