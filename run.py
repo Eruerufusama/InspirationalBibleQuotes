@@ -13,7 +13,7 @@ if __name__ == '__main__':
   start = time()
 
   # Load settings
-  settings = json_to_dict(sys.path[0] + "/resources/settings.json")
+  settings = json_to_dict("/resources/settings.json")
 
   # Selects a verse from the bible
   verse, verse_index = select_quote()
@@ -25,7 +25,7 @@ if __name__ == '__main__':
   put_quote_on_wallpaper(sys.path[0] + '/resources/photo_of_the_day.jpg', verse, settings)
 
   # Creates tweet-header
-  tweet, header_index = create_header()
+  tweet, header_index = create_header(settings)
 
   # Uploads image and tweet-header to twitter
   success = bot(tweet)
