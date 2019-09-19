@@ -11,24 +11,20 @@ auth = tweepy.OAuthHandler(api_key, api_secret)
 auth.set_access_token(token_key, token_secret)
 api = tweepy.API(auth)
 
-
 def bot(header):
     # Tweet
     print("Posting image.")
     #api.update_with_media(sys.path[0] + '/resources/photo_of_the_day.jpg', header)
     print("Image posted.")
 
-def get_hashtags(location, settings):
+def get_hashtags(settings):
     returnlist = []
 
     woeids = json_to_list(settings["text"]["hashtags"]["woeids"])
     keywords = file_to_list(settings["text"]["hashtags"]["keywords"])
     cities = file_to_list(settings["text"]["hashtags"]["cities to search"])
     searchspace = settings["text"]["hashtags"]["searchspace"]
-
-    # Dette er den mest vederstyggerlige linjen noensinne skrevet.
-    # hashtag_woeids = [woeid["woeid"] for i, city in enumerate(cities) if i < searchspace for woeid in woeids if woeid["city"] == city]
-
+    
     hashtag_woeids = []
     for i, city in enumerate(cities):
         for woeid in woeids:
@@ -47,10 +43,8 @@ def get_hashtags(location, settings):
                 # Some advanced Regex would be fantastic here.
                 if keyword in hashtag and hashtag not in returnlist:
                     returnlist.append(hashtag)
+
     return returnlist
 
-
-
 if __name__ == "__main__":
-    settings = json_to_dict("/resources/settings.json")
-    get_hashtags("New York", settings)
+    get_hashtags(json_to_dict('/resources/settings.json'))
