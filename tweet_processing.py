@@ -29,7 +29,6 @@ def fill_header_with_emojis(header, meme_amplitude):
     remaining_chars = max_chars - len(''.join(split_header)) - (meme_amplitude * 2)
 
     # Average emojis per word in tweet
-    print(remaining_chars)
     avg = remaining_chars / (len(split_header))
 
     emoji_keys = list(emoji_dict.keys())

@@ -6,6 +6,8 @@ import json
 import logger
 
 # Opens a text-file and returns the content of the file in the form of a list.
+
+
 def file_to_list(filepath):
     with open(sys.path[0] + filepath) as FILE:
         FILE_LIST = FILE.read().split('\n')
@@ -14,10 +16,13 @@ def file_to_list(filepath):
         return FILE_LIST
 
 # Opens the bible and assigns it an index. Returns a list of tuples, where every verse has an associated index.
+
+
 def select_quote():
     bible_list = file_to_list('/resources/bible_list.txt')
     index = randint(0, len(bible_list) - 1)
     return bible_list[index], index
+
 
 def get_img(settings):
     # Assign settings from settings.json
@@ -30,14 +35,14 @@ def get_img(settings):
 
     # Pre-checks
     if filetype not in supported_files:
-        print("Filetype not supported. Open settings.json and choose a supported filetype.")
-        print(f"supported filetypes: {supported_files}")
+        msg = f'{filetype} not supported.'
+        logger.log('Error', None, None, None, msg)
         exit()
 
     for i in [width, height]:
         if i < min_size or i > max_size:
-            print(f"Make sure the image is no larger than {max_size}px, and no smaller than {min_size}px. \n You can do this by respecifying the width and height in settings.json")
-
+            msg = f'Imgage size exceeds ma/min values. {max_size} / {min_size}'
+            logger.log('Error', None, None, None, msg)
 
     # Actual processing
     try:
@@ -48,15 +53,17 @@ def get_img(settings):
     except OSError:
         get_img(settings)
 
+
 def json_to_dict(json_file):
     with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
         return dict(json.load(json_file))
+
 
 def json_to_list(json_file):
     with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
         return list(json.load(json_file))
 
+
 def write_to_json(json_file, dct):
     with open(sys.path[0] + json_file, 'w') as json_file:
-        print(dct)
         json.dump(dct, json_file)
