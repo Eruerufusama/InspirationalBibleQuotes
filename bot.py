@@ -21,10 +21,10 @@ def bot(header):
 def get_hashtags(settings):
   hashtags = []
 
-  woeids = json_to_list(settings["text"]["all_hashtags"]["woeids"])
-  keywords = file_to_list(settings["text"]["all_hashtags"]["keywords"])
-  cities = file_to_list(settings["text"]["all_hashtags"]["cities to search"])
-  searchspace = settings["text"]["all_hashtags"]["searchspace"]
+  woeids = json_to_list(settings["text"]["hashtags"]["woeids"])
+  keywords = file_to_list(settings["text"]["hashtags"]["keywords"])
+  cities = file_to_list(settings["text"]["hashtags"]["cities to search"])
+  searchspace = settings["text"]["hashtags"]["searchspace"]
 
   hashtag_woeids = []
   for i, city in enumerate(cities):
