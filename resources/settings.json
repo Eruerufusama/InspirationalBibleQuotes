@@ -1,4 +1,10 @@
 {
+  "auth":{
+    "api public key": "WO1t9lUsG8OjAoEnJrU37Ohzd",
+    "api private key": "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2",
+    "token public key": "1166347129025155072-EaGxHUB9bUf5ImDmdyXOXPq4U5cZSZ",
+    "token private key": "bbJtob2GjLx4of2NwTYjMkw7OdBhhFzimufoFzySPFzKd"
+  },
   "text": {
     "text from source": "/resources/bible_verses.txt",
     "horizontal align": "center",
@@ -11,7 +17,7 @@
       "woeids": "/resources/woeid.json",
       "keywords": "/resources/keywords.txt",
       "cities to search": "/resources/list_of_cities.txt",
-      "searchspace": 2
+      "searchspace": 10
     }
   },
   "canvas": {

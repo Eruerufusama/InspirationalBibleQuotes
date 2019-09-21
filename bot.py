@@ -1,20 +1,24 @@
 import sys
-import tweepy  # Twitter module
+import tweepy
 from pre_processing import json_to_list, file_to_list, json_to_dict
 from random import choice
 
-# Sånne greier vi trenger for autentikasjon
-api_key, api_secret = "WO1t9lUsG8OjAoEnJrU37Ohzd", "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2"
-token_key, token_secret = "1166347129025155072-EaGxHUB9bUf5ImDmdyXOXPq4U5cZSZ", "bbJtob2GjLx4of2NwTYjMkw7OdBhhFzimufoFzySPFzKd"
 
-# Konstruksjon av et objekt vi kan bruke. bla bla bla--
-auth = tweepy.OAuthHandler(api_key, api_secret)
-auth.set_access_token(token_key, token_secret)
-api = tweepy.API(auth)
+def twitter_object(settings):
+  # Authentification variables
+  api_key = settings["auth"]["api public key"]
+  api_secret = settings["auth"]["api private key"]
+  token_key = settings["auth"]["token public key"]
+  token_secret = settings["auth"]["token private key"]
+
+  # Applying authentification
+  auth = tweepy.OAuthHandler(api_key, api_secret)
+  auth.set_access_token(token_key, token_secret)
+  return tweepy.API(auth)
 
 
-def bot(header):
-  # Tweet
+def bot(header, settings):
+  api = twitter_object(settings)
   api.update_with_media(sys.path[0] + '/resources/photo_of_the_day.jpg', header)
 
 
@@ -34,6 +38,8 @@ def get_hashtags(settings):
         break
     if i > searchspace:
       break
+  
+  api = twitter_object(settings)
 
   for woeid in hashtag_woeids:
     response = api.trends_place(woeid)
