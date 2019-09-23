@@ -3,7 +3,6 @@ import tweepy
 from pre_processing import json_to_list, file_to_list, json_to_dict
 from random import choice
 
-
 def twitter_object(settings):
   # Authentification variables
   api_key = settings["auth"]["api public key"]
