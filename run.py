@@ -28,7 +28,7 @@ if __name__ == '__main__':
   tweet, header_index = create_header(settings)
 
   # Uploads image and tweet-header to twitter
-  success = bot(tweet)
+  success = bot(tweet, settings)
 
   # Stops timer
   end = time()

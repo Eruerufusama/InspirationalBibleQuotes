@@ -1,4 +1,10 @@
 {
+  "auth":{
+    "api public key": "",
+    "api private key": "",
+    "token public key": "",
+    "token private key": ""
+  },
   "text": {
     "text from source": "/resources/bible_verses.txt",
     "horizontal align": "center",
@@ -11,7 +17,7 @@
       "woeids": "/resources/woeid.json",
       "keywords": "/resources/keywords.txt",
       "cities to search": "/resources/list_of_cities.txt",
-      "searchspace": 2
+      "searchspace": 10
     }
   },
   "canvas": {
