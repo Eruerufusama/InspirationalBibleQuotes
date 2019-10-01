@@ -9,7 +9,7 @@ def main():
 
 def recover_settings():
   settings = json_to_dict("/resources/settings_recover.json")
-  write_to_json("/resources/settings_.json", settings)
+  write_to_json("/resources/settings.json", settings)
 
 def reset_settings():
   settings = json_to_dict("/resources/settings.json")
