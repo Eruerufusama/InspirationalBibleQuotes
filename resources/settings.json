@@ -1,9 +1,9 @@
 {
   "auth":{
-    "api public key": "WO1t9lUsG8OjAoEnJrU37Ohzd",
-    "api private key": "31YhGtvSEadWkN5uL5FEdFpd4ddW4VtcaIW4sKJ92bkStBuAX2",
-    "token public key": "1166347129025155072-EaGxHUB9bUf5ImDmdyXOXPq4U5cZSZ",
-    "token private key": "bbJtob2GjLx4of2NwTYjMkw7OdBhhFzimufoFzySPFzKd"
+    "api public key": "",
+    "api private key": "",
+    "token public key": "",
+    "token private key": ""
   },
   "text": {
     "text from source": "/resources/bible_verses.txt",
