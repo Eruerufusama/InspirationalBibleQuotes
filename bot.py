@@ -22,21 +22,19 @@ def bot(header, settings):
 
 
 def get_hashtags(settings):
-  hashtags = []
-
   woeids = json_to_list(settings["text"]["hashtags"]["woeids"])
   keywords = file_to_list(settings["text"]["hashtags"]["keywords"])
   cities = file_to_list(settings["text"]["hashtags"]["cities to search"])
   searchspace = settings["text"]["hashtags"]["searchspace"]
 
-  hashtag_woeids = []
-  for i, city in enumerate(cities):
-    for woeid in woeids:
-      if woeid["city"] == city:
-        hashtag_woeids.append(woeid["woeid"])
-        break
-    if i > searchspace:
-      break
+
+  hashtag_woeids = [woeid["woeid"] for i, city in enumerate(cities) if i < searchspace for woeid in woeids if woeid["city"] == city]
+  # for i, city in enumerate(cities):
+  #   if i < searchspace:
+  #     for woeid in woeids:
+  #       if woeid["city"] == city:
+  #         hashtag_woeids.append(woeid["woeid"])
+  #         break
   
   api = twitter_object(settings)
 
@@ -44,11 +42,12 @@ def get_hashtags(settings):
     response = api.trends_place(woeid)
     all_hashtags = [trend["name"] for trend in response[0]["trends"] if trend["name"][0] == '#']
 
-    for keyword in keywords:
-      for hashtag in all_hashtags:
-        # Some advanced Regex would be fantastic here.
-        if keyword in hashtag and hashtag not in hashtags:
-          hashtags.append(hashtag)
+    hashtags = [hashtag for keyword in keywords for hashtag in all_hashtags if keyword in hashtag and hashtag not in hashtags]
+    # for keyword in keywords:
+    #   for hashtag in all_hashtags:
+    #     # Some advanced Regex would be fantastic here.
+    #     if keyword in hashtag and hashtag not in hashtags:
+    #       hashtags.append(hashtag)
 
   return choice(hashtags)
 
