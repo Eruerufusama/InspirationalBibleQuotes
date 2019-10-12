@@ -1,34 +1,39 @@
 {
-  "auth":{
-    "api public key": "",
-    "api private key": "",
-    "token public key": "",
-    "token private key": ""
+  "auth": {
+    "api public key": "FH1bt5l7zWtbA89Y6QseEcDJp",
+    "api private key": "xhW8bj0zRM4clOQqosiaxb9hDCz8TgoALW0Wu7b6bcNfeA7cmx",
+    "token public key": "1166347129025155072-P9dMLwVlQWUp7IomCq8nS66I0YHT4G",
+    "token private key": "ZyEKlph3c51xghBvY2IViC9fkTXm4tjlOozJBCBYuLmk5"
   },
-  "text": {
-    "text from source": "/resources/bible_verses.txt",
-    "horizontal align": "center",
-    "vertical align": "center",
-    "shadow offset": 2,
-    "font": "/fonts/Roboto-Medium.ttf",
-    "font-size": 44,
-    "characters per line": 40,
-    "hashtags": {
-      "woeids": "/resources/woeid.json",
-      "keywords": "/resources/keywords.txt",
-      "cities to search": "/resources/list_of_cities.txt",
-      "searchspace": 10
-    }
-  },
-  "canvas": {
+  "image": {
+    "image text source": "/resources/bible_list.txt",
+    "font source": "/fonts/Roboto-Medium.ttf",
+    "image file": "/resources/photo_of_the_day.jpg",
     "size": {
       "width": 1080,
       "height": 1080
     },
-    "margin": 0.1
+    "margin": 0.1,
+    "chars per line": 40,
+    "font size": 44,
+    "shadow offset": 2,
+    "horizontal align": "center",
+    "vertical align": "center"
   },
-  "image-data": {
-    "filetype": "jpg",
-    "quality": 100
+  "tweet": {
+    "hashtags": {
+      "woeids": "/resources/woeid.json",
+      "keywords": "/resources/keywords.txt",
+      "all cities": "/resources/list_of_cities.txt",
+      "searchspace": 2
+    },
+    "emojis": {
+      "source": "/resources/emojis.json",
+      "amplitude": 4
+    },
+    "text": {
+      "source": "/resources/tweet_headers.txt",
+      "max chars": 240
+    }
   }
 }
