@@ -8,24 +8,21 @@ import numpy.random as numpy
 from PIL import Image as IMG
 from PIL import ImageDraw, ImageFont, ImageFilter
 
+
 class Tweet:
     def __init__(self):
         self.init()
-
 
     def init(self):
         self.load_settings()
         self.evaluate_settings()
         self.create_twitter_object()
 
-
     def show_image(self):
         self.image.image.show()
 
-
     def show_header(self):
         print(self.header.header)
-
 
     def create_header(self):
         self.header = Header()
@@ -35,14 +32,13 @@ class Tweet:
     def create_image(self):
         self.image = Image()
         self.image.create()
-
+        self.image.save()
 
     def create_twitter_object(self):
         auth = tweepy.OAuthHandler(self.public_api_key, self.private_api_key)
         auth.set_access_token(self.public_token_key, self.private_token_key)
 
         self.bot = tweepy.API(auth)
-
 
     def get_woeids(self):
         woeids = []
@@ -69,17 +65,14 @@ class Tweet:
         if len(hashtags) > 0:
             self.header.hashtag = choice(hashtags)
 
-
     def post(self):
         image = self.image.image_path
         header = self.header.header
 
-        self.bot.update_with_media(image + header)
-
+        self.bot.update_with_media(image, header)
 
     def evaluate_settings(self):
         pass
-
 
     def load_settings(self):
         settings = json_to_dict("/resources/settings.json")
@@ -99,30 +92,24 @@ class Header:
     def __init__(self):
         self.init()
 
-
     def init(self):
         self.load_settings()
         self.evaluate_settings()
-
 
     def create(self):
         self.select_header()
         self.emojify_header()
         self.merge()
 
-
     def merge(self):
         self.header = self.header_with_emojis + self.hashtag
-
 
     def select_header(self):
         with open(self.header_source) as header:
             headers = header.read().split("\n\n")
-            i = randint(0, len(headers)-1)
+            i = randint(0, len(headers) - 1)
 
             self.plain_header = headers[i]
-    
-
 
     def emojify_header(self):
 
@@ -131,7 +118,6 @@ class Header:
 
         # Places emojis inn between words, and appends emojis before and after.
         self.fill_with_emojis(words_in_header)
-
 
     def fill_with_emojis(self, words):
         remaining_chars = self.max_chars - len(''.join(words)) - (self.meme_amp * 2) - len(self.hashtag)
@@ -149,7 +135,6 @@ class Header:
             emojified_message = self.smash_emojis_between_words(words, avg)
             self.header_with_emojis = emoji_prefix + emojified_message + emoji_suffix
 
-
     def smash_emojis_between_words(self, words, avg):
         emojified_message = ''
 
@@ -164,14 +149,11 @@ class Header:
 
         return emojified_message
 
-
     def create_prefix_or_suffix(self):
         return ''.join(numpy.choice(self.emojis, size=self.meme_amp, p=self.probabilities))
 
-
     def evaluate_settings(self):
         pass
-
 
     def load_settings(self):
         settings = json_to_dict("/resources/settings.json")
@@ -182,6 +164,7 @@ class Header:
         self.meme_amp = settings["tweet"]["emojis"]["amplitude"]
         self.header_source = sys.path[0] + settings["tweet"]["text"]["source"]
         self.max_chars = settings["tweet"]["text"]["max chars"]
+
 
 class Image:
     def __init__(self):
@@ -196,37 +179,31 @@ class Image:
     def save(self):
         self.image.save(self.image_path)
 
-
     def init(self):
         self.load_settings()
         self.evaluate_settings()
-
 
     def choose_background_image(self):
         url = f'https://picsum.photos/{self.width}/{self.height}/'
         urlretrieve(url, self.image_path)
 
-
     def create_background_image(self):
         self.image = IMG.open(self.image_path)
 
-
     def create_text_layer(self):
         self.text_layer = IMG.new('RGBA', (self.width, self.height), None)
-        
+
         self.create_font()
         self.create_draw_object()
         self.get_text()
         self.split_text()
         self.draw_text()
 
-
     def get_text(self):
         list_of_text = file_to_list(self.text_source)
-        i = randint(0, len(list_of_text)-1)
+        i = randint(0, len(list_of_text) - 1)
 
         self.text = list_of_text[i]
-    
 
     def draw_text(self):
         self.get_text_height()
@@ -239,11 +216,10 @@ class Image:
 
             if self.has_shadow():
                 self.draw.text((x + self.shadow_offset, y + self.shadow_offset), line, "black", self.font)
-            
+
             self.draw.text((x, y), line, "white", self.font)
 
             y += self.text_height
-
 
     def get_vertical_pos(self):
         if self.text_align_vertical.lower() == "center":
@@ -254,7 +230,6 @@ class Image:
 
         elif self.text_align_vertical.lower() == "bottom":
             return int(self.height * (1 - self.margin) - self.paragraph_height)
-
 
     def get_horizontal_pos(self, line):
         text_width = self.font.getsize(line)[0]
@@ -268,38 +243,29 @@ class Image:
         elif self.text_align_horizontal.lower() == "right":
             return self.width * (1 - self.margin) - text_width
 
-
     def has_shadow(self):
         if self.shadow_offset > 0:
             return True
         else:
             return False
 
-
     def create_font(self):
         self.font = ImageFont.truetype(self.font_type, self.font_size)
-
 
     def create_draw_object(self):
         self.draw = ImageDraw.Draw(self.text_layer)
 
-
-
     def get_text_height(self):
         self.text_height = self.font.getsize(self.lines[0])[1]
-
 
     def get_paragraph_height(self):
         self.paragraph_height = self.text_height * len(self.lines)
 
-
     def split_text(self):
         self.lines = wrap(self.text, self.chars_per_line)
 
-
     def merge_layers(self):
         self.image.paste(self.text_layer, (0, 0), self.text_layer)
-
 
     def load_settings(self):
         settings = json_to_dict("/resources/settings.json")
@@ -330,4 +296,6 @@ class Image:
             if size < min_size:
                 raise SizeError(f'Error: Any given size can not be less than {min_size}px')
 
-class SizeError(Exception): pass
+
+class SizeError(Exception):
+    pass
