@@ -21,24 +21,26 @@ def reset_settings():
     settings["auth"]["token private key"] = ""
     settings["auth"]["token public key"] = ""
 
-  settings["canvas"]["margin"] = 0.1
-  settings["canvas"]["size"]["height"] = 1080
-  settings["canvas"]["size"]["width"] = 1080
+  settings["image"]["image text source"] = "/resources/bible_list.txt"
+  settings["image"]["font source"] = "/fonts/Roboto-Medium.ttf"
+  settings["image"]["image file"] = "/resources/photo_of_the_day.jpg"
+  settings["image"]["size"]["height"] = 1080
+  settings["image"]["size"]["width"] = 1080
+  settings["image"]["margin"] = 0.1
+  settings["image"]["chars per line"] = 40
+  settings["image"]["font-size"] = 44
+  settings["image"]["shadow offset"] = 2
+  settings["image"]["horizontal align"] = "left"
+  settings["image"]["vertical align"] = "top"
 
-  settings["image-data"]["filetype"] = "jpg"
-  settings["image-data"]["quality"] = 100
-
-  settings["text"]["characters per line"] = 40
-  settings["text"]["font"] = "/fonts/Roboto-Medium.ttf"
-  settings["text"]["font-size"] = 44
-  settings["text"]["hashtags"]["cities to search"] = "/resources/list_of_cities.txt"
+  settings["tweet"]["hashtags"]["woeids"] = "/resources/woeid.json"
   settings["text"]["hashtags"]["keywords"] = "/resources/keywords.txt"
-  settings["text"]["hashtags"]["searchspace"] = 10
-  settings["text"]["hashtags"]["woeids"] = "/resources/woeid.json"
-  settings["text"]["horizontal align"] = "left"
-  settings["text"]["shadow offset"] = 2
-  settings["text"]["text from source"] = "/resources/bible_verses.txt"
-  settings["text"]["vertical align"] = "top"
+  settings["tweet"]["hashtags"]["all cities"] = "/resources/list_of_cities.txt"
+  settings["tweet"]["hashtags"]["searchspace"] = 10
+  settings["tweet"]["emojis"]["source"] = "/resources/emojis.json"
+  settings["tweet"]["emojis"]["amplitude"] = 4
+  settings["tweet"]["text"]["source"] = "/resources/tweet_headers.txt"
+  settings["tweet"]["text"]["max chars"] = 240
 
   write_to_json("/resources/settings.json", settings)
 

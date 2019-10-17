@@ -1,8 +1,8 @@
-from classes import Tweet
+from twitter import Tweet
 
 tweet = Tweet()
 
-tweet.create_header()
+#tweet.create_header()
 tweet.create_image()
 
-tweet.post()
+tweet.show_image()
