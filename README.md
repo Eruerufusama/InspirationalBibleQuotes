@@ -8,12 +8,7 @@ In actuality it's more of a template-bot that can be tweaked to suit any kind of
 
 2.  Create a twitter developer account and get access tokens to authorize your own bot. If you are unfamiliar with how to do this, look up a recent tutorial. 
 
-3.  Do one of the following:
-  - Run package-install.sh to locally install the modules used by the program.
-  - manually install the modules using pip.
-  ```
-  pip install Pillow numpy tweepy
-  ```
+3.  run "pip install -r requirements.txt"
 
 4.  Open the settings.json and configure them to your needs. They should be relatively self-explanatory.
 

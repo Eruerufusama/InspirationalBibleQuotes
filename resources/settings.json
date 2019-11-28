@@ -7,7 +7,7 @@
   },
   "image": {
     "image text source": "/resources/bible_list.txt",
-    "font source": "/fonts/Roboto-Medium.ttf",
+    "font source": "/resources/fonts/Roboto-Medium.ttf",
     "image file": "/resources/photo_of_the_day.jpg",
     "size": {
       "width": 1080,

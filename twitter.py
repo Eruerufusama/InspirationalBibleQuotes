@@ -17,6 +17,7 @@ class Tweet:
         To create a header to post, run the 'create_header'-method.
 
     '''
+
     def __init__(self):
         self.load_settings()
         self.evaluate_settings()
@@ -180,7 +181,7 @@ class Tweet:
         self.all_cities = file_to_list(settings["tweet"]["hashtags"]["all cities"])
         self.searchspace = settings["tweet"]["hashtags"]["searchspace"]
 
-    
+
     def evaluate_settings(self):
       # DOCUMENTATION
         '''

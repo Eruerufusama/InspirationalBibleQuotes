@@ -34,15 +34,24 @@ def open_json(json_file):
   # DOCUMENTATION
     '''
 
-    This is documentation.
+    Returns a dictionary or list based on the loaded json-file.
 
     '''
 
+  # LOGIC
     with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
         return json.load(json_file)
 
 
 
-def write_to_json(json_file, dct):
-    with open(sys.path[0] + json_file, 'w') as json_file:
-        json.dump(dct, json_file)
+def write_to_json(filename, dump):
+  # DOCUMENTATION
+    '''
+
+    Writes a dictionary or list to a json-file with a given filename.
+
+    '''
+
+  # LOGIC
+    with open(sys.path[0] + filename, 'w') as filename:
+        json.dump(dump, filename)
