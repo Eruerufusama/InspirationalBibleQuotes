@@ -1,19 +1,47 @@
 import json, sys
 
-def file_to_list(filepath):
+def file_to_list(filepath, split_char=None):
+  # DOCUMENTATION
+    '''
+
+    Takes a text-file and returns a list of strings.
+
+    '''
+
+  # VALIDATE
+    if split_char == None:
+        split_char = '\n'
+
+  # LOGIC
     with open(sys.path[0] + filepath) as FILE:
-        FILE_LIST = FILE.read().split('\n')
-        if FILE_LIST[-1] == '':
-            del FILE_LIST[-1]
-        return FILE_LIST
+        lines = FILE.read().split(split_char)
 
-def json_to_dict(json_file):
-    with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
-        return dict(json.load(json_file))
+    i = 0
+    while True:
+        if lines[i] == "":
+            del lines[i]
+        else:
+            i += 1
 
-def json_to_list(json_file):
+        if i >= len(lines):
+            break
+
+    return lines
+
+
+
+def open_json(json_file):
+  # DOCUMENTATION
+    '''
+
+    This is documentation.
+
+    '''
+
     with open(sys.path[0] + json_file, encoding="utf-8") as json_file:
-        return list(json.load(json_file))
+        return json.load(json_file)
+
+
 
 def write_to_json(json_file, dct):
     with open(sys.path[0] + json_file, 'w') as json_file:

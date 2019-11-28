@@ -1,8 +1,9 @@
 from twitter import Tweet
 
-tweet = Tweet()
+if __name__ == "__main__":
+    tweet = Tweet()
 
-#tweet.create_header()
-tweet.create_image()
+    tweet.create_header()
+    tweet.create_image()
 
-tweet.show_image()
+    tweet.post()
